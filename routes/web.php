@@ -16,5 +16,5 @@ Route::get('/', function () {
 });
 
 Route::get('/newsfeed', function () {
-    return "newsfeed";
+    return view('newsfeed');
 });

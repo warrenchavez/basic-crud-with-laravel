@@ -15,6 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/newsfeed', function () {
-    return view('newsfeed');
-});
+Route::get('/newsfeed', 'Controller@newsfeedData');
+
+Route::post('/newspost', 'Controller@newsfeedPost');
+

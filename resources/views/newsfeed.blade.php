@@ -45,22 +45,25 @@
 
 					    </fieldset>
 					</form>
-		        	<ul class="uk-list">
+
+
+		        	<ul id="posts" class="uk-list">
 		        		@foreach($results as $i)
-		        		<li>
-					    	<article class="uk-comment uk-background-muted uk-padding-small">
-							    <header class="uk-comment-header uk-flex-middle" uk-grid>
-							        <div class="uk-width-expand">
-							            <ul class="uk-comment-meta uk-subnav uk-subnav-divider uk-margin-remove-top uk-padding-remove">
-							                <li><a href="#">Edit</a></li>
-							                <li><a href="#" id="{{$i['id']}}" class="del-button">Delete</a></li>
-							            </ul>
-							        </div>
-							    </header>
-							    <div class="uk-comment-body">
-							    	{{$i['post']}}
-							    </div>
-							</article>
+		        		<li class="post-list">
+							<div class="uk-card uk-card-default uk-card-body">
+							<a href="" class="uk-align-right" uk-icon="icon: more-vertical"></a>
+							<div uk-dropdown="mode:click; pos: top-right">
+							    <ul class="uk-nav uk-dropdown-nav">
+							        <li class="uk-nav-header">Options</li>
+							        <li><a href="#modal-edit-post" uk-toggle>Edit</a></li>
+							        <li><a href="#" id="{{$i['id']}}" class="del-button">Delete</a></li>
+							        <li class="uk-nav-divider"></li>
+							        <li><a href="#">Close</a></li>
+							    </ul>
+							</div>
+							    <p>{{$i['post']}}</p>
+							</div>
+
 					    </li>
 					    @endforeach
 					</ul>
@@ -72,5 +75,18 @@
 		    </div>
 		</div>
 	</div>
+
+<!-- This is the modal -->
+<div id="modal-edit-post" uk-modal>
+    <div class="uk-modal-dialog uk-modal-body">
+        <h2 class="uk-modal-title">Edit Post</h2>
+        <textarea class="uk-textarea" placeholder="Textarea">{{$i['post']}}</textarea>
+        <p class="uk-text-right">
+            <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
+            <button class="uk-button uk-button-primary" type="button">Save</button>
+        </p>
+    </div>
+</div>
+
 </body>
 </html>
